@@ -1,6 +1,15 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
+
+app.use(cors())
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
 
 var users = [
     {
@@ -35,11 +44,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    let user = users.find(x => x.id === +req.params.id);
+    let user = users.find(x => x.login === req.body.login);
     if (user === undefined)
         res.send({ error: "user not found" });
     else {
-        if (user.login === req.login && user.pass === req.body.pass) {
+        if (user.login === req.body.login && user.pass === req.body.pass) {
             res.send(user);
         }
     }
