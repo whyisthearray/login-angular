@@ -20,9 +20,6 @@ export class UserService {
   }
 
   login(user: String, pass: String): Observable<User> {
-    console.dir('zalupa');
-    let huy = { login: user, pass: pass };
-    console.dir(huy);
     return this.http.post<User>(this.global + 'login', { login: user, pass: pass });
   }
 

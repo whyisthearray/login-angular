@@ -1,3 +1,9 @@
-<p>
-  registerview works!
-</p>
+<h1>Register</h1>
+<input [(ngModel)]="login" required />
+<input [(ngModel)]="password" required minlength="5" />
+<input [(ngModel)]="confirmPassword" required minlength="5" />
+<input [(ngModel)]="name" required />
+<input [(ngModel)]="city" required />
+<input [(ngModel)]="contact" />
+<button (click)="onClick()"> Register</button>
+<a href="/login">login</a>
